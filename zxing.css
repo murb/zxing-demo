@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
 }
-body {
+html, body {
   padding: 0;
   margin: 0;
   height: 100%;
@@ -52,6 +52,7 @@ body {
   padding: 0 0.5em;
   flex: 2;
   display: block;
+  font-size: 1.25em;
 }
 .zxing-wrapper form textarea:focus {
   border: 2px solid #000;
