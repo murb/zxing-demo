@@ -52,7 +52,7 @@ html, body {
   padding: 0 0.5em;
   flex: 2;
   display: block;
-  font-size: 1.25em;
+  font-size: 1.5em;
 }
 .zxing-wrapper form textarea:focus {
   border: 2px solid #000;
