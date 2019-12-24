@@ -1,3 +1,4 @@
+// source: https://github.com/murb/zxing-demo/blob/master/zxing_reader.js
 
 var ZXing = (function() {
   var _scriptDir = typeof document !== 'undefined' && document.currentScript ? document.currentScript.src : undefined;
@@ -21,4 +22,3 @@ if (typeof exports === 'object' && typeof module === 'object')
     define([], function() { return ZXing; });
   else if (typeof exports === 'object')
     exports["ZXing"] = ZXing;
-  

@@ -1,3 +1,5 @@
+// source: https://github.com/murb/zxing-demo/blob/master/zxing_helper.js
+
 // https://gist.github.com/jonleighton/958841
 // bytes: Uint8Array
 function uint8ArrayToBase64(bytes) {
@@ -107,7 +109,7 @@ function renderCodeToTargetElement(code) {
 
 
 function initializeScanner() {
-  console.log("initialize")
+  console.log("Initialize ZXing scanner")
   var video = document.createElement("video");
   var canvasElement = document.getElementById("zxing-canvas");
   var canvas = canvasElement.getContext("2d");
@@ -138,7 +140,6 @@ function initializeScanner() {
         track.stop();
       });
       video.pause();
-
     }
   }
 
@@ -156,16 +157,18 @@ if (!Element.prototype.matches) {
   Element.prototype.matches = Element.prototype.msMatchesSelector;
 }
 // document.addDelegatedEventListener("click", "a[href^='http']", -> confirm("external link") )
-HTMLDocument.prototype.addDelegatedEventListener = function(event, matcher, cb) {
-  var newCB;
-  newCB = function(event) {
-    if (event.target.matches && event.target.matches(matcher)) {
-      return cb(event);
-    }
-  };
-  return this.addEventListener(event, newCB);
-};
 
+if (!HTMLDocument.prototype.addDelegatedEventListener) {
+  HTMLDocument.prototype.addDelegatedEventListener = function(event, matcher, cb) {
+    var newCB;
+    newCB = function(event) {
+      if (event.target.matches && event.target.matches(matcher)) {
+        return cb(event);
+      }
+    };
+    return this.addEventListener(event, newCB);
+  };
+}
 
 
 document.addDelegatedEventListener("focusin", "*[data-zxing-output-target]", function(event){
@@ -176,6 +179,5 @@ document.addDelegatedEventListener("focusin", "*[data-zxing-output-target]", fun
 
 document.addDelegatedEventListener("focusout", "*", function(event){
   state.scanActive = false;
-  console.log(state)
 })
 

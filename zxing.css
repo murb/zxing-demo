@@ -71,14 +71,14 @@ html, body {
 }
 
 .zxing-wrapper input[type=submit] {
-  background: #fff;
+  background: #fefefe;
   font-weight: bold;
   border: 2px solid #000;
   border-radius: 1000em;
   font-size: 1em;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  height: 5em;
-  width: 5em;
+  height: 6em;
+  width: 6em;
   position: absolute;
   right: 1em;
   bottom: 1em;
