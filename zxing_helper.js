@@ -8,7 +8,7 @@
 var ZXing;
 
 if (typeof require !== "undefined") {
-  ZXing = require('zxing/zxing_reader');  
+  ZXing = require('zxing/zxing_reader');
 }
 
 function uint8ArrayToBase64(bytes) {
@@ -76,7 +76,7 @@ if (!HTMLDocument.prototype.addDelegatedEventListener) {
 // play a simple beep
 var AudioContext = window.AudioContext || window.webkitAudioContext;
 if (typeof AudioContext !== "undefined") {
-  var audioContext = new AudioContext();  
+  var audioContext = new AudioContext();
 }
 
 function beep(vol, freq, duration){
@@ -89,7 +89,7 @@ function beep(vol, freq, duration){
     u.connect(audioContext.destination)
     u.gain.value=vol*0.01
     v.start(audioContext.currentTime)
-    v.stop(audioContext.currentTime+duration*0.001)    
+    v.stop(audioContext.currentTime+duration*0.001)
   }
 }
 
@@ -147,7 +147,7 @@ function renderCodeInOutputMessage(code) {
 function renderCodeToTargetTextArea(code) {
   if (code.format) {
     var currentValue = state.targetElement.value.trim();
-    if (!escapeProblemFreeMatch(currentValue, code.text)) {
+    if (!currentValue.match(code.text)) { // tried escapeProblemFreeMatch() but too slow for Safari atm, out of scope anyhow
       currentValue = currentValue + "\n" + code.text;
       delegatedBeep();
     }
@@ -161,6 +161,7 @@ function renderCodeToTargetElement(code) {
   }
 }
 
+// too slow for safari (was a workaround for bad QR codes, but out of scope for now anyhow)
 function escapeProblemFreeMatch(text, target) {
   return text.replaceAll(/[\"\:\?\.\/]/g,"").match(target.replaceAll(/[\"\:\?\.\/]/g,""))
 }
